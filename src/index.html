@@ -1,0 +1,144 @@
+<!DOCTYPE>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery exTable Sample ( $.widget版 )</title>
+  <style>
+    body{ font-family:Arial, Helvetica, sans-serif; color:#505050; width:48em; margin:1em auto; }
+    .no{ width:3em; }
+    .cate{ width:15em; }
+    .count{ width:3em; }
+    .num{ text-align:right; }
+  </style>
+</head>
+<body>
+  <div style="float:left;width:45%">
+    <h3>sample - A</h3>
+    <table id="target1">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Category</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="no">1	</td><td class="cate">Ajax</td><td class="count num">203</td></tr>
+        <tr><td>2	</td><td>Animation and Effects</td><td class="num">296</td></tr>
+        <tr><td>3	</td><td>Browser Tweaks</td><td class="num">78</td></tr>
+        <tr><td>4	</td><td>Data</td><td class="num">139</td></tr>
+        <tr><td>5	</td><td>DOM</td><td class="num">141</td></tr>
+        <tr><td>6	</td><td>Drag-and-Drop</td><td class="num">37</td></tr>
+        <tr><td>7	</td><td>Events</td><td class="num">130</td></tr>
+        <tr><td>8	</td><td>Forms</td><td class="num">364</td></tr>
+        <tr><td>9	</td><td>Integration</td><td class="num">101</td></tr>
+        <tr><td>10	</td><td>JavaScript</td><td class="num">148</td></tr>
+        <tr><td>11	</td><td>jQuery Extensions</td><td class="num">219</td></tr>
+        <tr><td>12	</td><td>Layout</td><td class="num">183</td></tr>
+        <tr><td>13	</td><td>Media</td><td class="num">129</td></tr>
+        <tr><td>14	</td><td>Menus</td><td class="num">92</td></tr>
+        <tr><td>15	</td><td>Metaplugin</td><td class="num">26</td></tr>
+        <tr><td>16	</td><td>Navigation</td><td class="num">148</td></tr>
+        <tr><td>17	</td><td>Tables</td><td class="num">74</td></tr>
+        <tr><td>18	</td><td>User Interface</td><td class="num">644</td></tr>
+        <tr><td>19	</td><td>Utilities</td><td class="num">327</td></tr>
+        <tr><td>20	</td><td>Widgets</td><td class="num">241</td></tr>
+        <tr><td>21	</td><td>Windows and Overlays</td><td class="num">102</td></tr>
+      </tbody>	
+      <tfoot>
+        <tr>
+          <td>21</td>
+          <td></td>
+          <td class="count num">2532</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div style="float:right;width:45%">
+    <h3>sample - B</h3>
+    <table id="target2">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Category</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="no">1	</td><td class="cate">Ajax</td><td class="count num">203</td></tr>
+        <tr><td>2	</td><td>Animation and Effects</td><td class="num">296</td></tr>
+        <tr><td>3	</td><td>Browser Tweaks</td><td class="num">78</td></tr>
+        <tr><td>4	</td><td>Data</td><td class="num">139</td></tr>
+        <tr><td>5	</td><td>DOM</td><td class="num">141</td></tr>
+        <tr><td>6	</td><td>Drag-and-Drop</td><td class="num">37</td></tr>
+        <tr><td>7	</td><td>Events</td><td class="num">130</td></tr>
+        <tr><td>8	</td><td>Forms</td><td class="num">364</td></tr>
+        <tr><td>9	</td><td>Integration</td><td class="num">101</td></tr>
+        <tr><td>10	</td><td>JavaScript</td><td class="num">148</td></tr>
+        <tr><td>11	</td><td>jQuery Extensions</td><td class="num">219</td></tr>
+        <tr><td>12	</td><td>Layout</td><td class="num">183</td></tr>
+        <tr><td>13	</td><td>Media</td><td class="num">129</td></tr>
+        <tr><td>14	</td><td>Menus</td><td class="num">92</td></tr>
+        <tr><td>15	</td><td>Metaplugin</td><td class="num">26</td></tr>
+        <tr><td>16	</td><td>Navigation</td><td class="num">148</td></tr>
+        <tr><td>17	</td><td>Tables</td><td class="num">74</td></tr>
+        <tr><td>18	</td><td>User Interface</td><td class="num">644</td></tr>
+        <tr><td>19	</td><td>Utilities</td><td class="num">327</td></tr>
+        <tr><td>20	</td><td>Widgets</td><td class="num">241</td></tr>
+        <tr><td>21	</td><td>Windows and Overlays</td><td class="num">102</td></tr>
+      </tbody>	
+      <tfoot>
+        <tr>
+          <td>21</td>
+          <td></td>
+          <td class="count num">2532</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script src="./js/jquery-1.7.1.min.js"></script>
+  <script src="./js/lib/ui.core.js"></script>
+  <script src="./js/jquery.extable.widget.0.1.0.js"></script>
+  <script>
+  jQuery(function($) {
+    var targets = $('#target1,#target2')
+      // プラグイン実行
+      .exTable()
+      
+      // #target1,#target2にメソッドを適用
+      .exTable('setContainerCSS', {
+        background : '#505050',
+        color      : '#c0c0c0',
+        border     : 'solid 1px #202020'
+      })
+      .exTable('setCellsCSS','td', {
+        background : '#4a4a4a'
+      })
+      
+      // #target1にのみメソッドを適用
+      .eq(0)
+        .exTable('setCellsCSS','th,td', {
+          color : '#aaccff'
+        })
+      .end()
+      
+      // #target2にのみメソッドを適用
+      .eq(1)
+        .exTable('setCellsCSS','th,td', {
+          color : '#ffaacc'
+        })
+      .end()
+      
+      // #target1,#target2のスクロール位置の同期
+      .bind('exTable_scroll',function() {
+        $('#target' + (2 - targets.index(this)))
+          .exTable('getBody').scrollTop(
+            $(this).exTable('getBody').scrollTop()
+          );
+      });
+  })
+  </script>
+</body>
+</html>
